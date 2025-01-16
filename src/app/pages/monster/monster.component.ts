@@ -12,10 +12,19 @@ import { MonsterType } from '../../utils/monster.utils';
 import { PlayingCardComponent } from '../../components/playing-card/playing-card.component';
 import { Monster } from '../../models/monster.model';
 import { MonsterService } from '../../services/monster/monster.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-monster',
-  imports: [ReactiveFormsModule, PlayingCardComponent],
+  imports: [
+    ReactiveFormsModule,
+    PlayingCardComponent,
+    MatButtonModule,
+    MatInputModule,
+    MatSelectModule,
+  ],
   templateUrl: './monster.component.html',
   styleUrl: './monster.component.css',
 })
@@ -59,7 +68,7 @@ export class MonsterComponent implements OnInit, OnDestroy {
       const monsterFound = this.monsterService.getOne(this.monsterId() || -2);
       if (monsterFound) {
         this.monsterPreview = monsterFound;
-        this.monsterForm.patchValue(monsterFound)
+        this.monsterForm.patchValue(monsterFound);
       }
     });
   }
